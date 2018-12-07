@@ -1,7 +1,7 @@
-package com.lf.lms.impl
+package com.loanframe.lms.impl
 
 import akka.actor.{Actor, Props}
-import com.lf.lms.impl.LMSActor.LMSActorInvoke
+import com.loanframe.lms.impl.LMSActor.LMSActorInvoke
 
 class LMSActor extends Actor {
   override def receive: Receive = {
