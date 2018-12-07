@@ -1,8 +1,9 @@
-package com.lf.lms.api
+package com.loanframe.lms.api
 
 import akka.Done
+import com.lightbend.lagom.scaladsl.api.transport.Method
 import com.lightbend.lagom.scaladsl.api.{Service, ServiceCall}
-import com.lf.lms.models.LMSModels.UserProfile
+import com.loanframe.lms.models.LMSModels.BorrowerProfile
 
 trait LMSService extends Service {
 
@@ -11,10 +12,10 @@ trait LMSService extends Service {
     // @formatter:off
     named("lms-service")
       .withCalls(
-        pathCall("/v1/borrower/stepOne", createUserProfile)
+        restCall(Method.POST, "/v1/borrower/stepOne", createBorrowerProfile)
       ).withAutoAcl(true)
     // @formatter:on
   }
 
-  def createUserProfile: ServiceCall[UserProfile, Done]
+  def createBorrowerProfile: ServiceCall[BorrowerProfile, Done]
 }
