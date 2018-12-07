@@ -5,7 +5,6 @@ import akka.stream.ActorMaterializer
 import akka.util.Timeout
 import com.lf.lms.api.LMSService
 import com.lf.lms.models.LMSModels.UserProfile
-import com.loanframe.lfdb.models.LoginTable
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
@@ -27,7 +26,7 @@ class LFScheduler(lmsService: LMSService)(implicit ec: ExecutionContext) {
     //1. Consume from SQS
     //2. Match Message
     //3. fetch data from DB
-    lmsService.createUserProfile.invoke(borrowerProfile).map(res => println(s">>>>>>>>>>>>>>>>>>>>>>: ${res}"))
+    lmsService.createBorrowerProfile.invoke(borrowerProfile).map(res => println(s">>>>>>>>>>>>>>>>>>>>>>: ${res}"))
   }
 
   system.scheduler.schedule(2.seconds, 2.seconds)(hitLMSAPI)

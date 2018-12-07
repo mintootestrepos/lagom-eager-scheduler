@@ -25,7 +25,7 @@ lazy val `lms-impl` = (project in file("lms-impl")).enablePlugins(LagomScala)
       "com.amazonaws"               %      "aws-java-sdk-sqs"     %     "1.11.456",
       "com.google.code.gson"        %      "gson"                 %     "2.8.1",
       "com.typesafe.slick"          %%     "slick"                %     "3.2.1",
-      "com.loanframe"               %      "lf-data-models_2.12"  %     "1.0.0-SNAPSHOT
+      "com.loanframe"               %      "lf-data-models_2.12"  %     "1.0.0-SNAPSHOT"
     )
   )
   .settings(lagomForkedTestSettings: _*)
@@ -36,7 +36,7 @@ lazy val `lms-impl` = (project in file("lms-impl")).enablePlugins(LagomScala)
     , credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
   )
   .dependsOn(`lms-api`)
-
+val nexus_url = "https://staging-repo.loanframe.com/"
 //Define the external service’s host and port name.
 lagomUnmanagedServices in ThisBuild := Map("lms-service" -> "http://13.126.58.168/api")
 lagomCassandraEnabled in ThisBuild := false
